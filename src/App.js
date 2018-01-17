@@ -45,7 +45,7 @@ class App extends React.Component {
         return (
             <div className="todo-app">
                 <Header addTodo={this.addTodo}/>
-                <TodoList/>
+                <TodoList todos={this.state.todos}/>
                 <Footer/>
             </div>
         );
