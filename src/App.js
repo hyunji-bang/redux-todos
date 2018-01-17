@@ -40,12 +40,34 @@ class App extends React.Component {
         });
     };
 
+    deleteTodo = (id) => {
+        const newTodos = [...this.state.todos];
+        const targetIndex = newTodos.findIndex(todo => todo.id === id);
+
+        if(targetIndex > -1) {
+            newTodos.splice(targetIndex, 1)
+        }
+        // const deleteIndex = this.state.todos.findIndex((todo) => {
+        //     return todo.id === id
+        // })
+        // this.state.todos.splice(deleteIndex, 1)
+        //
+        // const newTodos = this.state.todos
+
+        this.setState({
+            todos: newTodos
+        })
+    }
+
     render() {
         console.log(this.state.todos);
         return (
             <div className="todo-app">
                 <Header addTodo={this.addTodo}/>
-                <TodoList todos={this.state.todos}/>
+                <TodoList
+                    todos={this.state.todos}
+                    deleteTodo={this.deleteTodo}
+                />
                 <Footer/>
             </div>
         );
