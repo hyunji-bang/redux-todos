@@ -1,6 +1,11 @@
 import React from 'react';
 
 class Header extends React.Component {
+    handleKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            this.props.addTodo(e.target.value);
+        }
+    }
     render() {
         return (
             <header>
@@ -9,8 +14,9 @@ class Header extends React.Component {
                     type="text"
                     className="todo-app__new-todo"
                     placeholder="What needs to be done?"
+                    onKeyDown={this.handleKeyDown}
                 />
-                <button className="toggle-all" />
+                <button className="toggle-all"/>
             </header>
         );
     }
