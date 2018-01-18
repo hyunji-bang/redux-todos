@@ -10,7 +10,7 @@ const TodoList = (props) => (
                 id={todo.id}
                 text={todo.text}
                 deleteTodo={()=>props.deleteTodo(todo.id)}
-                editTodo={()=>props.editTodo(todo.id)}
+                editTodo={props.editTodo}
                 isEditing={props.editingId === todo.id}
                 startEdit={()=>props.startEdit(todo.id)}
             >

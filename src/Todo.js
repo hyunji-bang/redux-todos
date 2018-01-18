@@ -17,6 +17,7 @@ const Todo = (props) => (
         </div>
         <input type="text"
                className="todo-item__edit"
+               onKeyPress={(e)=>props.editTodo(e, props.id)}
         />
     </li>
 );

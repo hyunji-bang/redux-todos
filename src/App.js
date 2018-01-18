@@ -60,12 +60,21 @@ class App extends React.Component {
         })
     }
 
-    editTodo = (id) => {
+    editTodo = (e, id) => {
+        const editText = e.target.value
         const newTodos = [...this.state.todos];
-        const targetIndex = newTodos.findIndex(todo => todo.id === id);
+        const editIndex = newTodos.findIndex(todo => todo.id === id)
+        newTodos.splice(editIndex, 1, {
+            id: id,
+            text: editText,
+            isDone: false
+        })
 
-        if(targetIndex > -1) {
-
+        if(e.charCode === 13){
+            this.setState({
+                todos: newTodos,
+                editingId: null
+            })
         }
     }
 
