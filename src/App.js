@@ -64,11 +64,16 @@ class App extends React.Component {
         const editText = e.target.value
         const newTodos = [...this.state.todos];
         const editIndex = newTodos.findIndex(todo => todo.id === id)
-        newTodos.splice(editIndex, 1, {
-            id: id,
-            text: editText,
-            isDone: false
-        })
+        // newTodos.splice(editIndex, 1, {
+        //     id: id,
+        //     text: editText,
+        //     isDone: false
+        // })
+
+
+        newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
+            text: editText
+        });
 
         if(e.charCode === 13){
             this.setState({
@@ -84,6 +89,13 @@ class App extends React.Component {
         })
     }
 
+    cancelEdit = () => {
+        this.setState({
+            ...this.state.todos,
+            editingId: null
+        })
+    }
+
     render() {
         console.log('this.state:', this.state);
         return (
@@ -94,6 +106,7 @@ class App extends React.Component {
                     deleteTodo={this.deleteTodo}
                     editTodo={this.editTodo}
                     startEdit={this.startEdit}
+                    cancelEdit={this.cancelEdit}
                     editingId={this.state.editingId}
                 />
                 <Footer/>

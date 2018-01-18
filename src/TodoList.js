@@ -13,6 +13,7 @@ const TodoList = (props) => (
                 editTodo={props.editTodo}
                 isEditing={props.editingId === todo.id}
                 startEdit={()=>props.startEdit(todo.id)}
+                cancelEdit={()=>props.cancelEdit()}
             >
             </Todo>
             ))}

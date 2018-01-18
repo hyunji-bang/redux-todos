@@ -18,6 +18,7 @@ const Todo = (props) => (
         <input type="text"
                className="todo-item__edit"
                onKeyPress={(e)=>props.editTodo(e, props.id)}
+               onBlur={props.cancelEdit}
         />
     </li>
 );
