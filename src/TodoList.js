@@ -6,11 +6,15 @@ const TodoList = (props) => (
         <ul className="todo-list">
             {props.todos.map((todo) => (
             <Todo
-                text={todo.text}
                 key={todo.id}
-                deleteTodo={(id)=>props.deleteTodo(todo.id)}
                 id={todo.id}
-            />
+                text={todo.text}
+                deleteTodo={()=>props.deleteTodo(todo.id)}
+                editTodo={()=>props.editTodo(todo.id)}
+                isEditing={props.editingId === todo.id}
+                startEdit={()=>props.startEdit(todo.id)}
+            >
+            </Todo>
             ))}
         </ul>
     </div>

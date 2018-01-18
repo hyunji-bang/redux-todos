@@ -23,7 +23,8 @@ class App extends React.Component {
                 id: 111111,
                 text: '밥먹자',
                 isDone: false
-            }]
+            }],
+            editingId: null
         };
     }
 
@@ -59,14 +60,32 @@ class App extends React.Component {
         })
     }
 
+    editTodo = (id) => {
+        const newTodos = [...this.state.todos];
+        const targetIndex = newTodos.findIndex(todo => todo.id === id);
+
+        if(targetIndex > -1) {
+
+        }
+    }
+
+    startEdit = (id) => {
+        this.setState({
+            editingId: id
+        })
+    }
+
     render() {
-        console.log(this.state.todos);
+        console.log('this.state:', this.state);
         return (
             <div className="todo-app">
                 <Header addTodo={this.addTodo}/>
                 <TodoList
                     todos={this.state.todos}
                     deleteTodo={this.deleteTodo}
+                    editTodo={this.editTodo}
+                    startEdit={this.startEdit}
+                    editingId={this.state.editingId}
                 />
                 <Footer/>
             </div>
