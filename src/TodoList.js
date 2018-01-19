@@ -1,24 +1,45 @@
-import React from 'react';
 import Todo from './Todo';
+import React, { Component } from 'react';
 
-const TodoList = (props) => (
-    <div className="todo-app__main">
-        <ul className="todo-list">
-            {props.todos.map((todo) => (
-            <Todo
-                key={todo.id}
-                id={todo.id}
-                text={todo.text}
-                deleteTodo={()=>props.deleteTodo(todo.id)}
-                editTodo={props.editTodo}
-                isEditing={props.editingId === todo.id}
-                startEdit={()=>props.startEdit(todo.id)}
-                cancelEdit={()=>props.cancelEdit()}
-            >
-            </Todo>
-            ))}
-        </ul>
-    </div>
-);
+export default class TodoList extends Component {
+    render() {
+        return (
+            <div className="todo-app__main">
+                <ul className="todo-list">
+                    {this.props.todos.map((todo) => (
+                        <Todo
+                            key={todo.id}
+                            id={todo.id}
+                            text={todo.text}
+                            deleteTodo={() => this.deleteTodo(todo.id)}
+                            editTodo={this.props.editTodo}
+                            cancelEdit={() => this.cancelEdit()}
+                        >
+                        </Todo>
+                    ))}
+                </ul>
+            </div>
+        )
+    }
 
-export default TodoList;
+    deleteTodo = (id) => {
+        const newTodos = [...this.state.todos];
+        const targetIndex = newTodos.findIndex(todo => todo.id === id);
+
+        if (targetIndex > -1) {
+            newTodos.splice(targetIndex, 1)
+        }
+        // const deleteIndex = this.state.todos.findIndex((todo) => {
+        //     return todo.id === id
+        // })
+        // this.state.todos.splice(deleteIndex, 1)
+        //
+        // const newTodos = this.state.todos
+
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+}
+

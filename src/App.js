@@ -6,6 +6,7 @@ import Footer from './Footer';
 class App extends React.Component {
     constructor() {
         super();
+
         this.state = {
             todos: [{
                 id: 1,
@@ -24,8 +25,22 @@ class App extends React.Component {
                 text: '밥먹자',
                 isDone: false
             }],
-            editingId: null
         };
+    }
+
+    render() {
+        console.log('this.state', this.state);
+        return (
+            <div className="todo-app">
+                <Header addTodo={this.addTodo}/>
+                <TodoList
+                    todos={this.state.todos}
+                    editingId={this.state.editingId}
+                    editTodo={this.editTodo}
+                />
+                <Footer/>
+            </div>
+        );
     }
 
     addTodo = (text) => {
@@ -41,28 +56,10 @@ class App extends React.Component {
         });
     };
 
-    deleteTodo = (id) => {
-        const newTodos = [...this.state.todos];
-        const targetIndex = newTodos.findIndex(todo => todo.id === id);
-
-        if(targetIndex > -1) {
-            newTodos.splice(targetIndex, 1)
-        }
-        // const deleteIndex = this.state.todos.findIndex((todo) => {
-        //     return todo.id === id
-        // })
-        // this.state.todos.splice(deleteIndex, 1)
-        //
-        // const newTodos = this.state.todos
-
-        this.setState({
-            todos: newTodos
-        })
-    }
-
     editTodo = (e, id) => {
         const editText = e.target.value
-        const newTodos = [...this.state.todos];
+        const newTodos = [...this.state.todos]
+
         const editIndex = newTodos.findIndex(todo => todo.id === id)
         // newTodos.splice(editIndex, 1, {
         //     id: id,
@@ -70,48 +67,15 @@ class App extends React.Component {
         //     isDone: false
         // })
 
+        // newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
+        //     text: editText
+        // });
 
-        newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
-            text: editText
-        });
+        newTodos[editIndex].text = editText
 
-        if(e.charCode === 13){
-            this.setState({
-                todos: newTodos,
-                editingId: null
-            })
-        }
-    }
-
-    startEdit = (id) => {
         this.setState({
-            editingId: id
+            todos: newTodos,
         })
-    }
-
-    cancelEdit = () => {
-        this.setState({
-            ...this.state.todos,
-            editingId: null
-        })
-    }
-
-    render() {
-        console.log('this.state:', this.state);
-        return (
-            <div className="todo-app">
-                <Header addTodo={this.addTodo}/>
-                <TodoList
-                    todos={this.state.todos}
-                    deleteTodo={this.deleteTodo}
-                    editTodo={this.editTodo}
-                    startEdit={this.startEdit}
-                    cancelEdit={this.cancelEdit}
-                    editingId={this.state.editingId}
-                />
-                <Footer/>
-            </div>
-        );
     }
 }
 
