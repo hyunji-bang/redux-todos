@@ -12,7 +12,6 @@ class Todo extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log('componentDidMount');
         if(this.state.isEditing ) {
             this._inputDom.value = this.props.text;
             this._inputDom.focus();
@@ -20,7 +19,6 @@ class Todo extends React.Component {
     }
 
     render() {
-        console.log('렌더~~~~~~~~~~this.state', this.state)
         return (
             <li className={classNames('todo-item', {editing: this.state.isEditing})}>
                 <button className="toggle"/>
