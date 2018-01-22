@@ -7,7 +7,8 @@ class Todo extends React.Component {
 
         this.state = {
             text: '',
-            isEditing: false
+            isEditing: false,
+            isCompleted: false
         }
     }
 
@@ -20,8 +21,8 @@ class Todo extends React.Component {
 
     render() {
         return (
-            <li className={classNames('todo-item', {editing: this.state.isEditing})}>
-                <button className="toggle"/>
+            <li className={classNames('todo-item', {editing: this.state.isEditing, completed: this.props.isDone})}>
+                <button className="toggle" onClick={this.props.toggleCompleted}/>
                 <div className="todo-item__view">
                     <div className="todo-item__view__text"
                          onDoubleClick={this.startEdit}
@@ -48,7 +49,9 @@ class Todo extends React.Component {
     handleEditTodo = (e) => {
         if (e.charCode === 13) {
             this.props.editTodo(e, this.props.id)
-            this.setState({isEditing:false})
+            this.setState({
+                isEditing:false
+            })
         }
     }
 

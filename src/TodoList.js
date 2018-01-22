@@ -12,6 +12,8 @@ const TodoList = (props) =>
                         text={todo.text}
                         editTodo={props.editTodo} // 넘겨주고, 실행은 todo에서
                         deleteTodo={()=>props.deleteTodo(todo.id)}
+                        toggleCompleted={()=>props.toggleCompleted(todo.id)}
+                        isDone={todo.isDone}
                     >
                     </Todo>
                 ))}
