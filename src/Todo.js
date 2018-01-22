@@ -7,20 +7,12 @@ class Todo extends React.Component {
 
         this.state = {
             text: '',
-            editingId: null,
+            isEditing: false
         }
-    }
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
-
-    componentWillUpdate() {
-        console.log('componentWillUpdate');
     }
 
     componentDidUpdate() {
-        console.log('componentDidUpdate');
-        console.log('this.state.isEditing : ', this.state.isEditing);
+        console.log('componentDidMount');
         if(this.state.isEditing ) {
             this._inputDom.value = this.props.text;
             this._inputDom.focus();
@@ -28,6 +20,7 @@ class Todo extends React.Component {
     }
 
     render() {
+        console.log('렌더~~~~~~~~~~this.state', this.state)
         return (
             <li className={classNames('todo-item', {editing: this.state.isEditing})}>
                 <button className="toggle"/>
@@ -56,7 +49,6 @@ class Todo extends React.Component {
 
     handleEditTodo = (e) => {
         if (e.charCode === 13) {
-            console.log('e',e)
             this.props.editTodo(e, this.props.id)
             this.setState({isEditing:false})
         }
@@ -64,16 +56,16 @@ class Todo extends React.Component {
 
     cancelEdit = () => {
         this.setState({
-            ...this.state.todos,
+            ...this.state,
             isEditing: false
         })
     }
 
     startEdit = () => {
         this.setState({
-            ...this.state.todos,
+            ...this.state,
             isEditing: true
-        })
+        });
     }
 }
 

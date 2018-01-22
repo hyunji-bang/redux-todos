@@ -29,21 +29,20 @@ class App extends React.Component {
     }
 
     render() {
-        console.log('this.state', this.state);
         return (
             <div className="todo-app">
-                <Header addTodo={this.addTodo}/>
+                <Header saveTodo={this.saveTodo}/>
                 <TodoList
                     todos={this.state.todos}
-                    editingId={this.state.editingId}
                     editTodo={this.editTodo}
+                    deleteTodo={this.deleteTodo}
                 />
                 <Footer/>
             </div>
         );
     }
 
-    addTodo = (text) => {
+    saveTodo = (text) => {
         this.setState({
             todos: [
                 ...this.state.todos,
@@ -75,6 +74,25 @@ class App extends React.Component {
 
         this.setState({
             todos: newTodos,
+        })
+    }
+
+    deleteTodo = (id) => {
+        const newTodos = [...this.state.todos];
+        const targetIndex = newTodos.findIndex(todo => todo.id === id);
+
+        if (targetIndex > -1) {
+            newTodos.splice(targetIndex, 1)
+        }
+        // const deleteIndex = this.state.todos.findIndex((todo) => {
+        //     return todo.id === id
+        // })
+        // this.state.todos.splice(deleteIndex, 1)
+        //
+        // const newTodos = this.state.todos
+
+        this.setState({
+            todos: newTodos
         })
     }
 }
