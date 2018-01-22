@@ -25,6 +25,7 @@ class App extends React.Component {
                 text: '밥먹자',
                 isDone: false
             }],
+            filter: 'All' // Active, Completed
         };
     }
 
@@ -34,11 +35,24 @@ class App extends React.Component {
         const completedLength = completedTodos.length
         const todosLength = stateTodos.length
 
+        let filteredTodos = null;
+        switch(this.state.filter) {
+            case 'Active':
+                filteredTodos = stateTodos.filter(v => !v.isDone);
+                break;
+            case 'Completed':
+                filteredTodos = stateTodos.filter(v => v.isDone);
+                break;
+            case 'All':
+            default:
+                filteredTodos = stateTodos;
+        }
+
         return (
             <div className="todo-app">
                 <Header saveTodo={this.saveTodo}/>
                 <TodoList
-                    todos={this.state.todos}
+                    todos={filteredTodos}
                     editTodo={this.editTodo}
                     deleteTodo={this.deleteTodo}
                     toggleCompleted={this.toggleCompleted}
@@ -46,6 +60,8 @@ class App extends React.Component {
                 <Footer completedLength={completedLength}
                         todosLength={todosLength}
                         clearCompleted={this.clearCompleted}
+                        filter={this.state.filter}
+                        setFilter={this.setFilter}
                 />
             </div>
         );
@@ -115,6 +131,7 @@ class App extends React.Component {
         }
 
         this.setState({
+            ...this.state,
             todos: newTodos
         })
     }
@@ -123,7 +140,15 @@ class App extends React.Component {
         const newTodos = this.state.todos.filter(todo => !todo.isDone); // 완료상태가 아닌것들만 남도록(완료삭제)
 
         this.setState({
+            ...this.state,
             todos: newTodos
+        })
+    }
+
+    setFilter = (filter) => {
+        this.setState({
+            ...this.state,
+            filter
         })
     }
 }
