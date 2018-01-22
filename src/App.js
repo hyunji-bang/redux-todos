@@ -29,8 +29,10 @@ class App extends React.Component {
     }
 
     render() {
-        const stateTodos = this.state.todos.filter((todo)=> todo.isDone === true)
-        const completedLength = stateTodos.length
+        const stateTodos = this.state.todos || []
+        const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
+        const completedLength = completedTodos.length
+        const todosLength = stateTodos.length
 
         return (
             <div className="todo-app">
@@ -42,6 +44,7 @@ class App extends React.Component {
                     toggleCompleted={this.toggleCompleted}
                 />
                 <Footer completedLength={completedLength}
+                        todosLength={todosLength}
                         clearCompleted={this.clearCompleted}
                 />
             </div>

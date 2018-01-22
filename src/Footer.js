@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const Footer = (props) =>
     (
         <div className="footer">
-            <span className="todo-count">0 items left</span>
+            <span className="todo-count">{props.todosLength - props.completedLength} items left</span>
             <ul className="todo-filters">
                 <li><a>All</a></li>
                 <li><a>Active</a></li>
