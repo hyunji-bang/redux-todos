@@ -2,38 +2,26 @@ import React from 'react';
 import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
+import { connect } from 'react-redux';
+import { addTodo } from '../action/todoAction'
+
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            todos: [{
-                id: 1,
-                text: '공부하자',
-                isDone: false
-            }, {
-                id: 1010,
-                text: '출근하자',
-                isDone: true
-            }, {
-                id: 23455,
-                text: '집에가자',
-                isDone: false
-            }, {
-                id: 111111,
-                text: '밥먹자',
-                isDone: false
-            }],
+            todos: this.props.todos,
             filter: 'All' // Active, Completed
         };
     }
 
     render() {
-        const stateTodos = this.state.todos || []
+        const stateTodos = this.props.todos || []
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length
         const todosLength = stateTodos.length
+        console.log('asdfsdfsdf this.state', this.state)
 
         let filteredTodos = null;
         switch(this.state.filter) {
@@ -50,7 +38,7 @@ class App extends React.Component {
 
         return (
             <div className="todo-app">
-                <Header saveTodo={this.saveTodo}/>
+                <Header saveTodo={this.props.addTodo}/>
                 <TodoList
                     todos={filteredTodos}
                     editTodo={this.editTodo}
@@ -67,18 +55,18 @@ class App extends React.Component {
         );
     }
 
-    saveTodo = (text) => {
-        this.setState({
-            todos: [
-                ...this.state.todos,
-                {
-                    id: Date.now(),
-                    text: text,
-                    isDone: false
-                }
-            ]
-        });
-    };
+    // saveTodo = (text) => {
+    //     this.setState({
+    //         todos: [
+    //             ...this.state.todos,
+    //             {
+    //                 id: Date.now(),
+    //                 text: text,
+    //                 isDone: false
+    //             }
+    //         ]
+    //     });
+    // };
 
     editTodo = (e, id) => {
         const editText = e.target.value
@@ -153,4 +141,14 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => (
+    state
+)
+
+
+const mapDispatchToProps = (dispatch) => ({
+    addTodo: (text) => dispatch(addTodo(text))
+})
+
+// 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.
+export default connect(mapStateToProps, mapDispatchToProps)(App);
