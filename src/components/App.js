@@ -3,8 +3,7 @@ import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { addTodo } from '../action/todoAction'
-
+import { addTodo, deleteTodo } from '../action/todoAction'
 
 class App extends React.Component {
     constructor(props) {
@@ -42,7 +41,7 @@ class App extends React.Component {
                 <TodoList
                     todos={filteredTodos}
                     editTodo={this.editTodo}
-                    deleteTodo={this.deleteTodo}
+                    deleteTodo={this.props.deleteTodo}
                     toggleCompleted={this.toggleCompleted}
                 />
                 <Footer completedLength={completedLength}
@@ -90,24 +89,24 @@ class App extends React.Component {
         })
     }
 
-    deleteTodo = (id) => {
-        const newTodos = [...this.state.todos];
-        const targetIndex = newTodos.findIndex(todo => todo.id === id);
-
-        if (targetIndex > -1) {
-            newTodos.splice(targetIndex, 1)
-        }
-        // const deleteIndex = this.state.todos.findIndex((todo) => {
-        //     return todo.id === id
-        // })
-        // this.state.todos.splice(deleteIndex, 1)
-        //
-        // const newTodos = this.state.todos
-
-        this.setState({
-            todos: newTodos
-        })
-    }
+    // deleteTodo = (id) => {
+    //     const newTodos = [...this.state.todos];
+    //     const targetIndex = newTodos.findIndex(todo => todo.id === id);
+    //
+    //     if (targetIndex > -1) {
+    //         newTodos.splice(targetIndex, 1)
+    //     }
+    //     // const deleteIndex = this.state.todos.findIndex((todo) => {
+    //     //     return todo.id === id
+    //     // })
+    //     // this.state.todos.splice(deleteIndex, 1)
+    //     //
+    //     // const newTodos = this.state.todos
+    //
+    //     this.setState({
+    //         todos: newTodos
+    //     })
+    // }
 
     toggleCompleted = (id) => {
         const newTodos = [...this.state.todos];
@@ -147,7 +146,8 @@ const mapStateToProps = (state) => (
 
 
 const mapDispatchToProps = (dispatch) => ({
-    addTodo: (text) => dispatch(addTodo(text))
+    addTodo: (text) => dispatch(addTodo(text)),
+    deleteTodo: (id) => dispatch(deleteTodo(id))
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.

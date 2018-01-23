@@ -1,7 +1,7 @@
 // 리듀서 정의 : 상태가 바뀌는 것을 명시
 
 import { combineReducers } from 'redux';
-import { ADD_TODO } from '../action/todoAction';
+import { ADD_TODO, DELETE_TODO } from '../action/todoAction';
 
 const initialState = [
     {
@@ -31,6 +31,14 @@ const todos = (state = initialState, action) => {
                 text: action.text,
                 isDone: false,
             }];
+        case DELETE_TODO:
+            const deleteIndex = state.findIndex(todo=>
+                todo.id === action.id
+            )
+            state.splice(deleteIndex, 1)
+            return [
+                ...state
+            ]
         default:
             return state;
     }
