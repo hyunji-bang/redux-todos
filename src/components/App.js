@@ -3,7 +3,7 @@ import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { addTodo, deleteTodo, editTodo } from '../action/todoAction'
+import { addTodo, deleteTodo, editTodo, clearComplete } from '../action/todoAction'
 
 class App extends React.Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class App extends React.Component {
     }
 
     render() {
+        console.log('this.state : ', this.state)
         const stateTodos = this.props.todos || []
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length
@@ -45,7 +46,7 @@ class App extends React.Component {
                 />
                 <Footer completedLength={completedLength}
                         todosLength={todosLength}
-                        clearCompleted={this.clearCompleted}
+                        clearComplete={this.props.clearComplete}
                         filter={this.state.filter}
                         setFilter={this.setFilter}
                 />
@@ -112,7 +113,6 @@ class App extends React.Component {
 
         if (targetIndex > -1) {
             newTodos[targetIndex].isDone = !newTodos[targetIndex].isDone
-            console.log('newTodo : ', newTodos)
         }
 
         this.setState({
@@ -122,7 +122,7 @@ class App extends React.Component {
     }
 
     clearCompleted = () => {
-        const newTodos = this.state.todos.filter(todo => !todo.isDone); // 완료상태가 아닌것들만 남도록(완료삭제)
+        const newTodos = this.props.todos.filter(todo => !todo.isDone); // 완료상태가 아닌것들만 남도록(완료삭제)
 
         this.setState({
             ...this.state,
@@ -146,7 +146,8 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => ({
     addTodo: (text) => dispatch(addTodo(text)),
     deleteTodo: (id) => dispatch(deleteTodo(id)),
-    editTodo: (id, text) => dispatch(editTodo(id, text))
+    editTodo: (id, text) => dispatch(editTodo(id, text)),
+    clearComplete: () => dispatch(clearComplete())
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.

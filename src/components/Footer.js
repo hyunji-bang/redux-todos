@@ -23,7 +23,7 @@ const Footer = (props) => {
             </ul>
             <button
                 className={classNames('todo-delete-completed', {hidden: !props.completedLength})}
-                onClick={()=>props.clearCompleted()}
+                onClick={()=>props.clearComplete()}
             >
                 Clear Completed
             </button>
