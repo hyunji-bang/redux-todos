@@ -3,7 +3,7 @@ import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { addTodo, deleteTodo } from '../action/todoAction'
+import { addTodo, deleteTodo, editTodo } from '../action/todoAction'
 
 class App extends React.Component {
     constructor(props) {
@@ -20,7 +20,6 @@ class App extends React.Component {
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length
         const todosLength = stateTodos.length
-        console.log('asdfsdfsdf this.state', this.state)
 
         let filteredTodos = null;
         switch(this.state.filter) {
@@ -69,24 +68,23 @@ class App extends React.Component {
 
     editTodo = (e, id) => {
         const editText = e.target.value
-        const newTodos = [...this.state.todos]
+        // const newTodos = [...this.state.todos]
 
-        const editIndex = newTodos.findIndex(todo => todo.id === id)
-        // newTodos.splice(editIndex, 1, {
-        //     id: id,
-        //     text: editText,
-        //     isDone: false
-        // })
+        // const editIndex = newTodos.findIndex(todo => todo.id === id)
+        // // newTodos.splice(editIndex, 1, {
+        // //     id: id,
+        // //     text: editText,
+        // //     isDone: false
+        // // })
 
-        // newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
-        //     text: editText
-        // });
+        // // newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
+        // //    text: editText
+        // // });
 
-        newTodos[editIndex].text = editText
+        // newTodos[editIndex].text = editText
 
-        this.setState({
-            todos: newTodos,
-        })
+        // id, text를 받아서 수정처리하는 액션 만들기
+        this.props.editTodo(id, editText)
     }
 
     // deleteTodo = (id) => {
@@ -147,7 +145,8 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => ({
     addTodo: (text) => dispatch(addTodo(text)),
-    deleteTodo: (id) => dispatch(deleteTodo(id))
+    deleteTodo: (id) => dispatch(deleteTodo(id)),
+    editTodo: (id, text) => dispatch(editTodo(id, text))
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.

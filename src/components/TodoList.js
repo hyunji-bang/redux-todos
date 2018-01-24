@@ -2,7 +2,6 @@ import React from 'react';
 import Todo from './Todo';
 
 const TodoList = (props) => {
-    console.log('todoslist props', props)
     return  (
         <div className="todo-app__main">
             <ul className="todo-list">

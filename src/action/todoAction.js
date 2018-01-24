@@ -2,6 +2,7 @@
 
 export const ADD_TODO = 'ADD_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
+export const EDIT_TODO = 'EDIT_TODO'
 
 // 액션 생성자
 export const addTodo = (text) => {
@@ -9,4 +10,7 @@ export const addTodo = (text) => {
 }
 export const deleteTodo = (id) => {
     return { type: DELETE_TODO, id }
+}
+export const editTodo = (id, text) => {
+    return { type: EDIT_TODO, id, text }
 }
