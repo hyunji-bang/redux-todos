@@ -4,6 +4,7 @@ export const ADD_TODO = 'ADD_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 export const EDIT_TODO = 'EDIT_TODO'
 export const CLEAR_COMPLETE = 'CLEAR_COMPLETE'
+export const SET_FILTER = 'SET_FILTER'
 
 // 액션 생성자
 export const addTodo = (text) => {
@@ -17,4 +18,8 @@ export const editTodo = (id, text) => {
 }
 export const clearComplete = () => {
     return { type: CLEAR_COMPLETE }
+}
+
+export const setFilter = (filter) => {
+    return { type: SET_FILTER, filter}
 }

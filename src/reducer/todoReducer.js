@@ -1,10 +1,9 @@
 // 리듀서 정의 : 상태가 바뀌는 것을 명시
-
 import { combineReducers } from 'redux';
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE } from '../action/todoAction';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE, SET_FILTER } from '../action/todoAction';
 
-const initialState = [
-    {
+const initialState = {
+    todos:[{
         id: 34,
         text: '테스트트트트',
         isDone: false
@@ -20,9 +19,10 @@ const initialState = [
         id: 55,
         text: '33테스트트트트',
         isDone: false
-    }
-]
-const todos = (state = initialState, action) => {
+    }],
+    filter: 'all'
+}
+const todos = (state = initialState.todos, action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
@@ -31,6 +31,11 @@ const todos = (state = initialState, action) => {
                 text: action.text,
                 isDone: false,
             }];
+            // return Object.assign({}, state, {
+            //     id: Date.now(),
+            //     text: action.text,
+            //     isDone: false
+            // })
         case DELETE_TODO:
             // const deleteIndex = state.findIndex(todo=>
             //     todo.id === action.id
@@ -41,9 +46,9 @@ const todos = (state = initialState, action) => {
                 ...res
             ]
         case EDIT_TODO:
-            const targetIdx = state.findIndex(item => item.id === action.id)
 
             // bad todo: 클릭한 인덱스의 id에 맞는 todo를 찾아서, 그 todo의 text를 바뀐 text로 변경
+            // const targetIdx = state.findIndex(item => item.id === action.id)
             // const newState = [...state]
             //
             // // bad bad
@@ -70,13 +75,31 @@ const todos = (state = initialState, action) => {
             const notCompletedTodos = state.filter(todo=>!todo.isDone);
             return notCompletedTodos // [...notCompletedTodos] 아님
 
+            // 참고 ) obj일 경우, 앞뒤 잘라내고 처리
+            // todos: [
+            //     ...state.todos.slice(0, action.index),
+            //     Object.assign({}, state.todos[action.index], {
+            //         completed: true
+            //     }),
+            //     ...state.todos.slice(action.index + 1)
+            // ]
+
+        default:
+            return state;
+    }
+}
+
+const todoFilter = (state = initialState.filter, action) => {
+    switch (action.type) {
+        case SET_FILTER:
+            return action.filter
         default:
             return state;
     }
 }
 
 const todoReducer = combineReducers({
-    todos
+    todos, todoFilter
 });
 
 export default todoReducer;

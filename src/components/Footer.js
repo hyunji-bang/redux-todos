@@ -1,16 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const filterNames = ['All', 'Active', 'Completed'];
+const filterNames = ['all', 'active', 'completed'];
 
 const Footer = (props) => {
-
-    const filters = filterNames.map(item => (
-        <li key={item}
-            onClick={()=>props.setFilter(item)}
+    const filters = filterNames.map(filter => (
+        <li key={filter}
+            onClick={()=>props.setFilter(filter)}
         >
-            <a className={props.filter === item ? 'selected' : ''}>
-                {item}
+            <a className={props.filter === filter ? 'selected' : ''}>
+                {filter}
             </a>
         </li>
     ));

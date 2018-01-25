@@ -3,15 +3,15 @@ import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { addTodo, deleteTodo, editTodo, clearComplete } from '../action/todoAction'
+import { addTodo, deleteTodo, editTodo, clearComplete, setFilter } from '../action/todoAction'
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            todos: this.props.todos,
-            filter: 'All' // Active, Completed
+            todos: [],
+            filter: null
         };
     }
 
@@ -23,32 +23,32 @@ class App extends React.Component {
         const todosLength = stateTodos.length
 
         let filteredTodos = null;
-        switch(this.state.filter) {
-            case 'Active':
+        switch(this.props.todoFilter) {
+            case 'active':
                 filteredTodos = stateTodos.filter(v => !v.isDone);
                 break;
-            case 'Completed':
+            case 'completed':
                 filteredTodos = stateTodos.filter(v => v.isDone);
                 break;
-            case 'All':
+            case 'all':
             default:
                 filteredTodos = stateTodos;
         }
 
         return (
             <div className="todo-app">
-                <Header saveTodo={this.props.addTodo}/>
+                <Header saveTodo={this.props.addTodo}/> {/* reducer */}
                 <TodoList
                     todos={filteredTodos}
                     editTodo={this.editTodo}
-                    deleteTodo={this.props.deleteTodo}
+                    deleteTodo={this.props.deleteTodo} // reducer
                     toggleCompleted={this.toggleCompleted}
                 />
                 <Footer completedLength={completedLength}
                         todosLength={todosLength}
-                        clearComplete={this.props.clearComplete}
-                        filter={this.state.filter}
-                        setFilter={this.setFilter}
+                        clearComplete={this.props.clearComplete} // reducer
+                        filter={this.props.todoFilter} // reducer
+                        setFilter={this.props.setFilter} // reducer
                 />
             </div>
         );
@@ -108,7 +108,7 @@ class App extends React.Component {
     // }
 
     toggleCompleted = (id) => {
-        const newTodos = [...this.state.todos];
+        const newTodos = [...this.props.todos];
         const targetIndex = newTodos.findIndex(todo => todo.id === id);
 
         if (targetIndex > -1) {
@@ -130,12 +130,12 @@ class App extends React.Component {
         })
     }
 
-    setFilter = (filter) => {
-        this.setState({
-            ...this.state,
-            filter
-        })
-    }
+    // setFilter = (filter) => {
+    //     this.setState({
+    //         ...this.state,
+    //         filter
+    //     })
+    // }
 }
 
 const mapStateToProps = (state) => (
@@ -147,7 +147,8 @@ const mapDispatchToProps = (dispatch) => ({
     addTodo: (text) => dispatch(addTodo(text)),
     deleteTodo: (id) => dispatch(deleteTodo(id)),
     editTodo: (id, text) => dispatch(editTodo(id, text)),
-    clearComplete: () => dispatch(clearComplete())
+    clearComplete: () => dispatch(clearComplete()),
+    setFilter: (filter) => dispatch(setFilter(filter))
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.
