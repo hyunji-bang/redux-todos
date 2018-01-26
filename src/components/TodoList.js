@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from './Todo';
 import { connect } from 'react-redux';
-import { deleteTodo, editTodo } from '../action/todoAction'
+import { deleteTodo, editTodo, toggleFilter } from '../action/todoAction'
 
 class TodoList extends React.Component {
     render() {
@@ -15,7 +15,7 @@ class TodoList extends React.Component {
                             text={todo.text}
                             editTodo={this.editTodo} // 넘겨주고, 실행은 todo에서
                             deleteTodo={() => this.props.deleteTodo(todo.id)}  // reducer
-                            toggleCompleted={() => this.toggleCompleted(todo.id)}
+                            toggleCompleted={() => this.props.toggleCompleted(todo.id)}
                             isDone={todo.isDone}
                         >
                         </Todo>
@@ -45,24 +45,25 @@ class TodoList extends React.Component {
         this.props.editTodo(id, editText)
     }
 
-    toggleCompleted = (id) => {
-        const newTodos = [...this.props.todos];
-        const targetIndex = newTodos.findIndex(todo => todo.id === id);
-
-        if (targetIndex > -1) {
-            newTodos[targetIndex].isDone = !newTodos[targetIndex].isDone
-        }
-
-        this.setState({
-            ...this.state,
-            todos: newTodos
-        })
-    }
+    // toggleCompleted = (id) => {
+    //     const newTodos = [...this.props.todos];
+    //     const targetIndex = newTodos.findIndex(todo => todo.id === id);
+    //
+    //     if (targetIndex > -1) {
+    //         newTodos[targetIndex].isDone = !newTodos[targetIndex].isDone
+    //     }
+    //
+    //     this.setState({
+    //         ...this.state,
+    //         todos: newTodos
+    //     })
+    // }
 }
 
 const mapDispatchToProps = (dispatch) => ({
     deleteTodo: (id) => dispatch(deleteTodo(id)),
     editTodo: (id, text) => dispatch(editTodo(id, text)),
+    toggleCompleted: (id) => dispatch(toggleFilter(id))
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.

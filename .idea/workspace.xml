@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c21e3af-b47f-48ef-b901-2b0b001ef5ad" name="Default" comment="">
+    <list default="true" id="1c21e3af-b47f-48ef-b901-2b0b001ef5ad" name="Default" comment="t">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/action/todoAction.js" afterPath="$PROJECT_DIR$/src/action/todoAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/App.js" afterPath="$PROJECT_DIR$/src/components/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Footer.js" afterPath="$PROJECT_DIR$/src/components/Footer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TodoList.js" afterPath="$PROJECT_DIR$/src/components/TodoList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducer/todoReducer.js" afterPath="$PROJECT_DIR$/src/reducer/todoReducer.js" />
     </list>
@@ -14,14 +17,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44098884">
+    <splitter split-orientation="horizontal" split-proportion="0.45773524">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="226">
-                  <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+                <state relative-caret-position="395">
+                  <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -29,11 +32,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Todo.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="TodoList.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/TodoList.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="252">
+                  <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Todo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Todo.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="263">
-                  <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+                <state relative-caret-position="148">
+                  <caret line="24" column="78" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="78" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -45,23 +60,21 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TodoList.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/TodoList.js">
+          <file leaf-file-name="todoAction.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/action/todoAction.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="827">
-                  <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="64" selection-end-column="57" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="360">
+                  <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="29" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Footer.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Footer.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Footer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+                <state relative-caret-position="164">
+                  <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -84,22 +97,10 @@
           <file leaf-file-name="todoReducer.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reducer/todoReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="16" />
+                <state relative-caret-position="2025">
+                  <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
                   <folding>
                     <element signature="e#26#64#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -111,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>App</find>
       <find>commit</find>
       <find>mountingtest</find>
       <find>todolist</find>
@@ -139,8 +139,9 @@
       <find>gomugom</find>
       <find>people</find>
       <find>saveTodo</find>
-      <find>setFilter</find>
       <find>clear</find>
+      <find>setFilter</find>
+      <find>SET_FILTER</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,12 +167,13 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/utils.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/action/todoAction.js" />
-        <option value="$PROJECT_DIR$/src/components/Footer.js" />
         <option value="$PROJECT_DIR$/src/components/Header.js" />
-        <option value="$PROJECT_DIR$/src/components/App.js" />
-        <option value="$PROJECT_DIR$/src/reducer/todoReducer.js" />
+        <option value="$PROJECT_DIR$/src/components/Todo.js" />
+        <option value="$PROJECT_DIR$/src/action/todoAction.js" />
         <option value="$PROJECT_DIR$/src/components/TodoList.js" />
+        <option value="$PROJECT_DIR$/src/reducer/todoReducer.js" />
+        <option value="$PROJECT_DIR$/src/components/App.js" />
+        <option value="$PROJECT_DIR$/src/components/Footer.js" />
       </list>
     </option>
   </component>
@@ -191,8 +193,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-16" />
+    <option name="y" value="33" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
   </component>
@@ -308,7 +311,7 @@
       <workItem from="1516672988656" duration="21551000" />
       <workItem from="1516757839487" duration="17120000" />
       <workItem from="1516845670091" duration="20805000" />
-      <workItem from="1516932592801" duration="9393000" />
+      <workItem from="1516932592801" duration="16162000" />
     </task>
     <task id="LOCAL-00001" summary="todo 입력시 이벤트 함수 바인딩">
       <created>1516189255410</created>
@@ -443,11 +446,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516945060741</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="코드정리">
+      <created>1516947258819</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1516947258819</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135799000" />
+    <option name="totallyTimeSpent" value="142568000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,7 +469,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="-16" y="33" width="1440" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11627907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -506,7 +516,8 @@
     <MESSAGE value="redux 2. clearComplete" />
     <MESSAGE value="redux 2. 리듀서 분리 / 주석 달기" />
     <MESSAGE value="redux 3. 각 컴포넌트에 redux 연결" />
-    <option name="LAST_COMMIT_MESSAGE" value="redux 3. 각 컴포넌트에 redux 연결" />
+    <MESSAGE value="코드정리" />
+    <option name="LAST_COMMIT_MESSAGE" value="코드정리" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -866,6 +877,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -885,44 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/action/todoAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducer/todoReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="16" />
-          <folding>
-            <element signature="e#26#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -933,10 +907,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Todo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="148">
+          <caret line="24" column="78" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="78" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -945,18 +919,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TodoList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="64" selection-end-column="57" />
+        <state relative-caret-position="252">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Todo.js">
+    <entry file="file://$PROJECT_DIR$/src/action/todoAction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+        <state relative-caret-position="360">
+          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducer/todoReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

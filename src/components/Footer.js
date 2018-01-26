@@ -6,11 +6,15 @@ import { clearComplete, setFilter } from '../action/todoAction'
 const filterNames = ['all', 'active', 'completed'];
 class Footer extends React.Component {
     render() {
+        const completedLength = this.props.completedLength;
+        const todosLength = this.props.todosLength;
+        console.log('this.props', this.props)
+
         const filters = filterNames.map(filter => (
             <li key={filter}
                 onClick={()=>this.props.setFilter(filter)}
             >
-                <a className={this.props.filter === filter ? 'selected' : ''}>
+                <a className={this.props.stateFilter === filter ? 'selected' : ''}>
                     {filter}
                 </a>
             </li>
@@ -18,12 +22,12 @@ class Footer extends React.Component {
 
         return (
             <div className="footer">
-                <span className="todo-count">{this.props.todosLength - this.props.completedLength} items left</span>
+                <span className="todo-count">{todosLength - completedLength} items left</span>
                 <ul className="todo-filters">
                     {filters}
                 </ul>
                 <button
-                    className={classNames('todo-delete-completed', {hidden: !this.props.completedLength})}
+                    className={classNames('todo-delete-completed', {hidden: !completedLength})}
                     onClick={() => this.props.clearComplete()}
                 >
                     Clear Completed

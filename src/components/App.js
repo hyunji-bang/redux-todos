@@ -10,9 +10,11 @@ class App extends React.Component {
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length
         const todosLength = stateTodos.length
+        const stateFilter = this.props.todoFilter || ''
+        console.log('this.props :', this.props)
 
         let filteredTodos = null;
-        switch(this.props.todoFilter) {
+        switch(stateFilter) {
             case 'active':
                 filteredTodos = stateTodos.filter(v => !v.isDone);
                 break;
@@ -33,7 +35,7 @@ class App extends React.Component {
                 />
                 <Footer completedLength={completedLength}
                         todosLength={todosLength}
-                        filter={this.props.todoFilter} // reducer
+                        stateFilter={stateFilter}
                 />
             </div>
         );

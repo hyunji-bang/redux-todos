@@ -1,6 +1,6 @@
 // 리듀서 정의 : 상태가 바뀌는 것을 명시
 import {combineReducers} from 'redux';
-import {ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE, SET_FILTER} from '../action/todoAction';
+import {ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE, SET_FILTER, TOGGLE_FILTER} from '../action/todoAction';
 
 const initialState = {
     todos: [{
@@ -64,7 +64,6 @@ const todos = (state = initialState.todos, action) => {
             // 중복되는 text는 덮어쓰기가 되고 나머지요소들(action.done)도 같이 가져옴
             return state.map(todo => {
                 if (todo.id === action.id) {
-                    console.log('todo', todo)
                     return {
                         ...todo,
                         text: action.text
@@ -103,6 +102,17 @@ const todos = (state = initialState.todos, action) => {
         //     }),
         //     ...state.todos.slice(action.index + 1)
         // ]
+
+        case TOGGLE_FILTER:
+            return state.map((todo)=>{
+                if(todo.id === action.id) {
+                    return {
+                        ...todo,
+                        isDone: !todo.isDone
+                    }
+                }
+                return todo;
+            })
 
         default:
             return state;

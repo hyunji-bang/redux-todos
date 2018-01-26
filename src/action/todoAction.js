@@ -5,6 +5,7 @@ export const DELETE_TODO = 'DELETE_TODO'
 export const EDIT_TODO = 'EDIT_TODO'
 export const CLEAR_COMPLETE = 'CLEAR_COMPLETE'
 export const SET_FILTER = 'SET_FILTER'
+export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
 // 액션 생성자
 export const addTodo = (text) => {
@@ -22,4 +23,8 @@ export const clearComplete = () => {
 
 export const setFilter = (filter) => {
     return { type: SET_FILTER, filter}
+}
+
+export const toggleFilter = (id) => {
+    return { type: TOGGLE_FILTER, id}
 }
