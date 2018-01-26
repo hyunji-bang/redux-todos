@@ -1,4 +1,6 @@
 import React from 'react';
+import { addTodo } from '../action/todoAction'
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
     render() {
@@ -17,9 +19,14 @@ class Header extends React.Component {
     }
     handleKeyDown = (e) => {
         if (e.keyCode === 13) {
-            this.props.saveTodo(e.target.value);
+            this.props.addTodo(e.target.value);
         }
     }
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+    addTodo: (text) => dispatch(addTodo(text))
+})
+
+
+export default connect(undefined, mapDispatchToProps)(Header);

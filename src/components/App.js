@@ -3,21 +3,10 @@ import Header from './Header';
 import TodoList from './TodoList';
 import Footer from './Footer';
 import { connect } from 'react-redux';
-import { addTodo, deleteTodo, editTodo, clearComplete, setFilter } from '../action/todoAction'
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            todos: [],
-            filter: null
-        };
-    }
-
     render() {
-        console.log('this.state : ', this.state)
-        const stateTodos = this.props.todos || []
+        const stateTodos = this.props.todos || [] // store의 todos
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length
         const todosLength = stateTodos.length
@@ -37,23 +26,18 @@ class App extends React.Component {
 
         return (
             <div className="todo-app">
-                <Header saveTodo={this.props.addTodo}/> {/* reducer */}
+                <Header/>
                 <TodoList
                     todos={filteredTodos}
                     editTodo={this.editTodo}
-                    deleteTodo={this.props.deleteTodo} // reducer
-                    toggleCompleted={this.toggleCompleted}
                 />
                 <Footer completedLength={completedLength}
                         todosLength={todosLength}
-                        clearComplete={this.props.clearComplete} // reducer
                         filter={this.props.todoFilter} // reducer
-                        setFilter={this.props.setFilter} // reducer
                 />
             </div>
         );
     }
-
     // saveTodo = (text) => {
     //     this.setState({
     //         todos: [
@@ -66,27 +50,6 @@ class App extends React.Component {
     //         ]
     //     });
     // };
-
-    editTodo = (e, id) => {
-        const editText = e.target.value
-        // const newTodos = [...this.state.todos]
-
-        // const editIndex = newTodos.findIndex(todo => todo.id === id)
-        // // newTodos.splice(editIndex, 1, {
-        // //     id: id,
-        // //     text: editText,
-        // //     isDone: false
-        // // })
-
-        // // newTodos[editIndex] = Object.assign({}, newTodos[editIndex], {
-        // //    text: editText
-        // // });
-
-        // newTodos[editIndex].text = editText
-
-        // id, text를 받아서 수정처리하는 액션 만들기
-        this.props.editTodo(id, editText)
-    }
 
     // deleteTodo = (id) => {
     //     const newTodos = [...this.state.todos];
@@ -107,29 +70,6 @@ class App extends React.Component {
     //     })
     // }
 
-    toggleCompleted = (id) => {
-        const newTodos = [...this.props.todos];
-        const targetIndex = newTodos.findIndex(todo => todo.id === id);
-
-        if (targetIndex > -1) {
-            newTodos[targetIndex].isDone = !newTodos[targetIndex].isDone
-        }
-
-        this.setState({
-            ...this.state,
-            todos: newTodos
-        })
-    }
-
-    clearCompleted = () => {
-        const newTodos = this.props.todos.filter(todo => !todo.isDone); // 완료상태가 아닌것들만 남도록(완료삭제)
-
-        this.setState({
-            ...this.state,
-            todos: newTodos
-        })
-    }
-
     // setFilter = (filter) => {
     //     this.setState({
     //         ...this.state,
@@ -142,14 +82,5 @@ const mapStateToProps = (state) => (
     state
 )
 
-
-const mapDispatchToProps = (dispatch) => ({
-    addTodo: (text) => dispatch(addTodo(text)),
-    deleteTodo: (id) => dispatch(deleteTodo(id)),
-    editTodo: (id, text) => dispatch(editTodo(id, text)),
-    clearComplete: () => dispatch(clearComplete()),
-    setFilter: (filter) => dispatch(setFilter(filter))
-})
-
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, undefined)(App);

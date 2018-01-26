@@ -1,33 +1,51 @@
 import React from 'react';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+import { clearComplete, setFilter } from '../action/todoAction'
 
 const filterNames = ['all', 'active', 'completed'];
-
-const Footer = (props) => {
-    const filters = filterNames.map(filter => (
-        <li key={filter}
-            onClick={()=>props.setFilter(filter)}
-        >
-            <a className={props.filter === filter ? 'selected' : ''}>
-                {filter}
-            </a>
-        </li>
-    ));
-
-    return (
-        <div className="footer">
-            <span className="todo-count">{props.todosLength - props.completedLength} items left</span>
-            <ul className="todo-filters">
-                {filters}
-            </ul>
-            <button
-                className={classNames('todo-delete-completed', {hidden: !props.completedLength})}
-                onClick={()=>props.clearComplete()}
+class Footer extends React.Component {
+    render() {
+        const filters = filterNames.map(filter => (
+            <li key={filter}
+                onClick={()=>this.props.setFilter(filter)}
             >
-                Clear Completed
-            </button>
-        </div>
-    );
+                <a className={this.props.filter === filter ? 'selected' : ''}>
+                    {filter}
+                </a>
+            </li>
+        ));
+
+        return (
+            <div className="footer">
+                <span className="todo-count">{this.props.todosLength - this.props.completedLength} items left</span>
+                <ul className="todo-filters">
+                    {filters}
+                </ul>
+                <button
+                    className={classNames('todo-delete-completed', {hidden: !this.props.completedLength})}
+                    onClick={() => this.props.clearComplete()}
+                >
+                    Clear Completed
+                </button>
+            </div>
+        );
+    }
+
+    // clearCompleted = () => {
+    //     const newTodos = this.props.todos.filter(todo => !todo.isDone); // 완료상태가 아닌것들만 남도록(완료삭제)
+    //
+    //     this.setState({
+    //         ...this.state,
+    //         todos: newTodos
+    //     })
+    // }
 };
 
-export default Footer;
+const mapDispatchToProps = (dispatch) => ({
+    clearComplete: () => dispatch(clearComplete()),
+    setFilter: (filter) => dispatch(setFilter(filter))
+})
+
+// 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.
+export default connect(undefined, mapDispatchToProps)(Footer);
