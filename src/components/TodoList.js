@@ -4,18 +4,7 @@ import { connect } from 'react-redux';
 import { deleteTodo, editTodo } from '../action/todoAction'
 
 class TodoList extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            todos: [],
-            filter: null
-        };
-    }
-
     render() {
-        console.log('todoList props :', this.props)
-        console.log('todoList state :', this.state)
         return (
             <div className="todo-app__main">
                 <ul className="todo-list">

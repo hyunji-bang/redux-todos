@@ -42,19 +42,17 @@ const todos = (state = initialState.todos, action) => {
             // )
             // state.splice(deleteIndex, 1)
             const res = state.filter(item => item.id !== action.id)
-            return [
-                ...res
-            ]
-        case EDIT_TODO:
-            const targetIdx = state.findIndex(item => item.id === action.id)
+            return res
 
-            // // bad todo: 클릭한 인덱스의 id에 맞는 todo를 찾아서, 그 todo의 text를 바뀐 text로 변경
-            const newState = [...state]
+        case EDIT_TODO:
+            // const targetIdx = state.findIndex(item => item.id === action.id)
+            // const newState = [...state]
             //
             // // 1. ** bad-bad **
+            // // bad todo: 클릭한 인덱스의 id에 맞는 todo를 찾아서, 그 todo의 text를 바뀐 text로 변경
             // // newState[targetIdx].text = action.text // --> 얕은 복사가 되버림
             //
-            // // 2. 그나마 나은 방법 : 객체 자체까지 복사
+            // // 2. 그나마 나은 방법 : 객체 자체를 복사
             // newState[targetIdx] = {
             //     ...state[targetIdx],
             //     text : action.text
@@ -66,6 +64,7 @@ const todos = (state = initialState.todos, action) => {
             // 중복되는 text는 덮어쓰기가 되고 나머지요소들(action.done)도 같이 가져옴
             return state.map(todo => {
                 if (todo.id === action.id) {
+                    console.log('todo', todo)
                     return {
                         ...todo,
                         text: action.text
@@ -91,7 +90,6 @@ const todos = (state = initialState.todos, action) => {
             //
             // console.log('test', test);
             // console.log('test2', test2);
-
 
         case CLEAR_COMPLETE:
             const notCompletedTodos = state.filter(todo => !todo.isDone);
