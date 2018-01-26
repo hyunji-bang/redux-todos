@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
     render() {
+        console.log('APP this.props', this.props)
         const stateTodos = this.props.todos || [] // store의 todos
         const completedTodos = stateTodos.filter((todo)=> todo.isDone === true)
         const completedLength = completedTodos.length

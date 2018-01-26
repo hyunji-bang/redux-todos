@@ -1,6 +1,6 @@
 // 리듀서 정의 : 상태가 바뀌는 것을 명시
 import {combineReducers} from 'redux';
-import {ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE, SET_FILTER, TOGGLE_FILTER} from '../action/todoAction';
+import {ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_COMPLETE, SET_FILTER, TOGGLE_DONE, TOGGLE_ALL} from '../action/todoAction';
 
 const initialState = {
     todos: [{
@@ -103,7 +103,7 @@ const todos = (state = initialState.todos, action) => {
         //     ...state.todos.slice(action.index + 1)
         // ]
 
-        case TOGGLE_FILTER:
+        case TOGGLE_DONE:
             return state.map((todo)=>{
                 if(todo.id === action.id) {
                     return {
@@ -113,6 +113,16 @@ const todos = (state = initialState.todos, action) => {
                 }
                 return todo;
             })
+
+        case TOGGLE_ALL:
+            return state.map((todo)=> {
+                const flag = false
+                return {
+                    ...todo,
+                    isDone: !flag
+                    }
+                }
+            )
 
         default:
             return state;

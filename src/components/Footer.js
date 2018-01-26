@@ -8,8 +8,6 @@ class Footer extends React.Component {
     render() {
         const completedLength = this.props.completedLength;
         const todosLength = this.props.todosLength;
-        console.log('this.props', this.props)
-
         const filters = filterNames.map(filter => (
             <li key={filter}
                 onClick={()=>this.props.setFilter(filter)}

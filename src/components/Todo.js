@@ -22,7 +22,7 @@ class Todo extends React.Component {
     render() {
         return (
             <li className={classNames('todo-item', {editing: this.state.isEditing, completed: this.props.isDone})}>
-                <button className="toggle" onClick={this.props.toggleCompleted}/>
+                <button className="toggle" onClick={this.props.toggleDone}/>
                 <div className="todo-item__view">
                     <div className="todo-item__view__text"
                          onDoubleClick={this.startEdit}

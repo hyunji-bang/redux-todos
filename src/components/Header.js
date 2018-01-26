@@ -1,5 +1,5 @@
 import React from 'react';
-import { addTodo } from '../action/todoAction'
+import { addTodo, toggleAll } from '../action/todoAction'
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
@@ -13,7 +13,8 @@ class Header extends React.Component {
                     placeholder="What needs to be done?"
                     onKeyDown={this.handleKeyDown}
                 />
-                <button className="toggle-all"/>
+                <button className="toggle-all"
+                        onClick={this.props.toggleAll}/>
             </header>
         );
     }
@@ -25,7 +26,8 @@ class Header extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addTodo: (text) => dispatch(addTodo(text))
+    addTodo: (text) => dispatch(addTodo(text)),
+    toggleAll: () => dispatch(toggleAll())
 })
 
 

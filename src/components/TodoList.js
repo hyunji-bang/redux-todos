@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from './Todo';
 import { connect } from 'react-redux';
-import { deleteTodo, editTodo, toggleFilter } from '../action/todoAction'
+import { deleteTodo, editTodo, toggleDone } from '../action/todoAction'
 
 class TodoList extends React.Component {
     render() {
@@ -14,8 +14,8 @@ class TodoList extends React.Component {
                             id={todo.id}
                             text={todo.text}
                             editTodo={this.editTodo} // 넘겨주고, 실행은 todo에서
-                            deleteTodo={() => this.props.deleteTodo(todo.id)}  // reducer
-                            toggleCompleted={() => this.props.toggleCompleted(todo.id)}
+                            deleteTodo={() => this.props.deleteTodo(todo.id)}
+                            toggleDone={() => this.props.toggleDone(todo.id)}
                             isDone={todo.isDone}
                         >
                         </Todo>
@@ -63,7 +63,7 @@ class TodoList extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
     deleteTodo: (id) => dispatch(deleteTodo(id)),
     editTodo: (id, text) => dispatch(editTodo(id, text)),
-    toggleCompleted: (id) => dispatch(toggleFilter(id))
+    toggleDone: (id) => dispatch(toggleDone(id)),
 })
 
 // 디스패치와 상태를 주입하려는 컴포넌트를 감싸줍니다.
