@@ -115,15 +115,23 @@ const todos = (state = initialState.todos, action) => {
             })
 
         case TOGGLE_ALL:
+        if(state.every(todo => todo.isDone)) {
             return state.map((todo)=> {
-                const flag = false
                 return {
                     ...todo,
-                    isDone: !flag
+                    isDone: false
                     }
                 }
             )
-
+        } else {
+            return state.map((todo)=> {
+                return {
+                    ...todo,
+                    isDone: true
+                    }
+                }
+            )
+        }
         default:
             return state;
     }
