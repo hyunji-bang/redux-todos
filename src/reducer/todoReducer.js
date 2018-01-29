@@ -94,15 +94,6 @@ const todos = (state = initialState.todos, action) => {
             const notCompletedTodos = state.filter(todo => !todo.isDone);
             return notCompletedTodos // [...notCompletedTodos] 아님
 
-        // 참고 ) obj일 경우, 앞뒤 잘라내고 처리
-        // todos: [
-        //     ...state.todos.slice(0, action.index),
-        //     Object.assign({}, state.todos[action.index], {
-        //         completed: true
-        //     }),
-        //     ...state.todos.slice(action.index + 1)
-        // ]
-
         case TOGGLE_DONE:
             return state.map((todo)=>{
                 if(todo.id === action.id) {
@@ -113,6 +104,14 @@ const todos = (state = initialState.todos, action) => {
                 }
                 return todo;
             })
+        // 참고 ) obj일 경우, 앞뒤 잘라내고 처리
+        // todos: [
+        //     ...state.todos.slice(0, action.index),
+        //     Object.assign({}, state.todos[action.index], {
+        //         isDone: true
+        //     }),
+        //     ...state.todos.slice(action.index + 1)
+        // ]
 
         case TOGGLE_ALL:
         if(state.every(todo => todo.isDone)) {
